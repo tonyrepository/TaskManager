@@ -9,9 +9,8 @@ $conectar = $conexion->conectar();
 $pdo = $conectar->prepare($sql);
 $pdo->execute();
 
-$result = $pdo->fetch(PDO::FETCH_ASSOC);
+$result = $pdo->fetchAll(PDO::FETCH_ASSOC);
 
-echo "<pre>";
-print_r($result);
+echo json_encode($result);
 
 ?>
