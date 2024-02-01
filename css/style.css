@@ -59,6 +59,7 @@ header input[type="text"] {
 
 #tarea textarea {
     min-width: calc(100%-20px);
+    width: calc(100%-20px);
     max-width: calc(100%-20px);
     min-height: 200px;
     max-height: 200px;
