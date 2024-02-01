@@ -1,24 +1,16 @@
 <?php
 include_once("db.php");
-include_once("checkExist.php");
 
-function insert($nombre, $descripcion) {
-    if (checkExist($nombre, $descripcion) != 0) {
-        echo "Tarea ya existente";
-        return;
-    }
+$params = [
+    ":id" => $id,
+];
 
-    $params = [
-        ":nombre" => $nombre,
-        ":descripcion" =>$descripcion
-    ];
+$sql = "DELETE FROM tasks WHERE id = :id";
 
-    $sql = "INSERT INTO tasks VALUES (default, :nombre, :descripcion)";
+$conexion = new Conexion();
+$conectar = $conexion->conectar();
 
-    $conexion = new Conexion();
-    $conectar = $conexion->conectar();
+$pdo = $conectar->prepare($sql);
+$pdo->execute($params);
 
-    $pdo = $conectar->prepare($sql);
-    $pdo->execute($params);
-}
 ?>
