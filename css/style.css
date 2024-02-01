@@ -15,7 +15,7 @@ body {
     background: var(--primary-color);
 }
 
-input {
+input, textarea {
     outline: 0;
     border: 0;
 }
@@ -23,19 +23,16 @@ input {
 header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background: var(--emphasis);
     padding: 10px;
+    width: 100vw;
 }
 
 header input[type="text"] {
     background: var(--primary-color);
-    height: 100%;
+    height: 80%;
     padding: 10px;
-}
-
-main {
-    display: flex;
-    justify-content: center;
 }
 
 #tarea, #result {
@@ -49,6 +46,7 @@ main {
 
 #tarea {
     background: var(--secondary-color);
+    height: 420px;
 }
 
 #tarea * {
