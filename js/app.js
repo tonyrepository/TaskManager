@@ -5,16 +5,16 @@ $(document).ready(
         $("#searchBar").keyup(() => {
             refresh($("#searchBar").val())
         })
-        
+
         $("#saveTask").click(() => {
             insert()
         })
 
         $("body").click((e) => {
             if($(e.target).attr("mod")) {
-                modify()
+                modify(e.target)
             } else if($(e.target).attr("del")) {
-                remove()
+                remove(e.target)
             }
         })
     }
@@ -39,12 +39,12 @@ function insert() {
     $("#taskDesc").val("")
 }
 
-function modify() {
+function modify(object) {
     $.ajax({
-        url: "php/modify.php",
+        url: "php/update.php",
         async: true,
         dataType: "text",
-        data: {id: $(e.target).attr("del"), nocache: Math.random()},
+        data: {id: $(object).attr("del"), nocache: Math.random()},
         success: () => {
             refresh()
         },
@@ -54,12 +54,12 @@ function modify() {
     })
 }
 
-function remove() {
+function remove(object) {
     $.ajax({
         url: "php/delete.php",
         async: true,
         dataType: "text",
-        data: {id: $(e.target).attr("del"), nocache: Math.random()},
+        data: {id: $(object).attr("del"), nocache: Math.random()},
         success: () => {
             refresh()
         },
@@ -77,8 +77,9 @@ function refresh(values = "") {
         dataType: "json",
         data: {filter: values, nocache: Math.random()},
         success: function (data) {
+            $("#result").html("")
+            console.log(data)
             if(data.length > 0) {
-                $("#result").empty()
                 $("#result").append(
                     "<table>" +
                         "<tr>" +
@@ -99,8 +100,8 @@ function refresh(values = "") {
                             "<td>" +
                                 element["Descripcion"] +
                                 "<div id='settings'>" +
-                                "<input type='button' mod='" + element["id"] + "' value='Modificar'>" + 
-                                "<input  type='button' del='" + element["id"] + "' value='Borrar'>" +
+                                "<input type='button' id='mod' mod='" + element["id"] + "' value='Modificar'>" + 
+                                "<input  type='button' id='del' del='" + element["id"] + "' value='Borrar'>" +
                                 "</div>" +
                             "</td>" +
                         "</tr>"
@@ -109,6 +110,8 @@ function refresh(values = "") {
                 $("#result table").append(
                     "</table>"
                 )
+            } else {
+                $("#result").append("<strong>no data</strong>")
             }
         },
         error: () => {

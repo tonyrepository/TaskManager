@@ -130,6 +130,7 @@ table th {
 
 #settings {
     float: right;
+    margin-right: .5rem;
 }
 
 #mod, #del {
