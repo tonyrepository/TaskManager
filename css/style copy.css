@@ -6,18 +6,13 @@
 }
 
 :root {
-    --primary-color: #fff;
-    --secondary-color: #2f2f2f;
+    --primary-color: #FFF;
+    --secondary-color: #2F2F2F;
     --emphasis: #09F;
 }
 
 body {
     background: var(--primary-color);
-    width: 100%;
-}
-
-strong {
-    color: var(--emphasis);
 }
 
 input, textarea {
@@ -29,16 +24,9 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--secondary-color);
+    background: var(--emphasis);
     padding: 10px;
     width: 100vw;
-    position: sticky;
-    top: 0;
-}
-
-header h1,
-i {
-    color: var(--emphasis);
 }
 
 header input[type="text"] {
@@ -47,29 +35,18 @@ header input[type="text"] {
     padding: 10px;
 }
 
-.container {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
-    padding: 2.5rem 0;
-    width: 100%;
-}
-
 #tarea, #result {
     display: flex;
     flex-flow: column;
-    justify-content: center;
     border-radius: .5rem;
-    margin: 2.5rem 0;
-    width: 700px;
-    text-align: center;
-    border: 1px solid var(--secondary-color);
+    margin: 10px;
+    width: 500px;
+    max-width: calc(50vw - 10px);
 }
 
 #tarea {
     background: var(--secondary-color);
-    height: 600px;
-    
+    height: 420px;
 }
 
 #tarea * {
@@ -78,15 +55,14 @@ header input[type="text"] {
     margin: 20px;
     padding: 10px;
     font-size: 1rem;
-    width: calc(100% - 40px);
 }
 
 #tarea textarea {
-    resize: none;
-    min-width: calc(100% - 40px);
-    max-width: calc(100% - 40px);;
-    min-height: 350px;
-    max-height: 350px;
+    min-width: calc(100%-20px);
+    width: calc(100%-20px);
+    max-width: calc(100%-20px);
+    min-height: 200px;
+    max-height: 200px;
 }
 
 #tarea input[type="button"] {
