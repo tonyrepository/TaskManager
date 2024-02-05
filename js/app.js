@@ -86,7 +86,7 @@ function refresh(values = "") {
                             "<th>" +
                                 "Título" +
                             "</th>" +
-                            "<th>" +
+                            "<th colspan='2'>" +
                                 "Descripción" +
                             "</th>" +
                         "</tr>"
@@ -99,10 +99,10 @@ function refresh(values = "") {
                             "</td>" +
                             "<td>" +
                                 element["Descripcion"] +
-                                "<div id='settings'>" +
+                            "</td>" +
+                            "<td id='settings'>" +
                                 "<input type='button' id='mod' mod='" + element["id"] + "' value='Modificar'>" + 
                                 "<input  type='button' id='del' del='" + element["id"] + "' value='Borrar'>" +
-                                "</div>" +
                             "</td>" +
                         "</tr>"
                     )

@@ -75,7 +75,12 @@ table {
 }
 
 table :is(td, th) {
-    padding: 10px 0;
+    padding: 10px;
+    width: max-content;
+}
+
+table tr :nth-child(2) {
+    width: 100%;
 }
 
 table tr:not(:last-of-type) :is(th, td) {
@@ -85,6 +90,10 @@ table tr:not(:last-of-type) :is(th, td) {
 table th {
     background-color: var(--secondary-color);
     color: var(--emphasis);
+}
+
+table td {
+    text-align: left;
 }
 
 #tarea {
@@ -128,20 +137,9 @@ table th {
     animation-duration: 0.5s;
 }
 
-#settings {
-    float: right;
-    margin-right: .5rem;
-}
-
 #mod, #del {
     padding: .5rem;
     cursor: pointer;
-    filter: opacity(0);
-    transition: filter .5s;
-}
-
-td:hover :is(#mod, #del) {
-    filter: opacity(1);
 }
 
 #mod {
