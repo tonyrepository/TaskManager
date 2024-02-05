@@ -28,7 +28,7 @@ $(document).ready(
     }
 );
 
-function refresh(selector = "") {
+function refresh(values = "") {
     $.ajax({
         type: "GET",
         url: "php/selectAll.php",
