@@ -9,6 +9,7 @@
     --primary-color: #fff;
     --secondary-color: #2f2f2f;
     --emphasis: #09F;
+    --warn: #F50;
 }
 
 body {
@@ -127,6 +128,28 @@ table th {
     animation-duration: 0.5s;
 }
 
+#settings {
+    float: right;
+}
+
+#mod, #del {
+    padding: .5rem;
+    cursor: pointer;
+    filter: opacity(0);
+    transition: filter .5s;
+}
+
+td:hover :is(#mod, #del) {
+    filter: opacity(1);
+}
+
+#mod {
+    background-color: var(--emphasis);
+}
+
+#del {
+    background-color: var(--warn);
+}
 
 @keyframes buttonPush {
     0% {

@@ -1,6 +1,8 @@
 <?php
 include_once("db.php");
 
+$id = $_GET["id"];
+
 $params = [
     ":id" => $id,
 ];

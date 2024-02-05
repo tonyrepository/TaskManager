@@ -5,28 +5,69 @@ $(document).ready(
         $("#searchBar").keyup(() => {
             refresh($("#searchBar").val())
         })
+        
         $("#saveTask").click(() => {
-            console.log(taskName + taskDesc)
-            if(taskName != "") {
-                $.ajax({
-                    url: "php/insert.php",
-                    async: true,
-                    dataType: "text",
-                    data: {nomTask: $("#taskName").val(), descTask: $("#taskDesc").val(), nocache: Math.random()},
-                    success: () => {
-                        refresh()
-                    },
-                    error: () => {
-                        console.log("error")
-                    }
-                })
-            }
-            $("#taskName").val("")
-            $("#taskDesc").val("")
+            insert()
         })
 
+        $("body").click((e) => {
+            if($(e.target).attr("mod")) {
+                modify()
+            } else if($(e.target).attr("del")) {
+                remove()
+            }
+        })
     }
 );
+
+function insert() {
+    if(taskName != "") {
+        $.ajax({
+            url: "php/insert.php",
+            async: true,
+            dataType: "text",
+            data: {nomTask: $("#taskName").val(), descTask: $("#taskDesc").val(), nocache: Math.random()},
+            success: () => {
+                refresh()
+            },
+            error: () => {
+                console.log("error")
+            }
+        })
+    }
+    $("#taskName").val("")
+    $("#taskDesc").val("")
+}
+
+function modify() {
+    $.ajax({
+        url: "php/modify.php",
+        async: true,
+        dataType: "text",
+        data: {id: $(e.target).attr("del"), nocache: Math.random()},
+        success: () => {
+            refresh()
+        },
+        error: () => {
+            console.log("error")
+        }
+    })
+}
+
+function remove() {
+    $.ajax({
+        url: "php/delete.php",
+        async: true,
+        dataType: "text",
+        data: {id: $(e.target).attr("del"), nocache: Math.random()},
+        success: () => {
+            refresh()
+        },
+        error: () => {
+            console.log("error")
+        }
+    })
+}
 
 function refresh(values = "") {
     $.ajax({
@@ -57,8 +98,10 @@ function refresh(values = "") {
                             "</td>" +
                             "<td>" +
                                 element["Descripcion"] +
-                                "<div id='" + element["id"] + "'>Modificar</div>" + 
-                                "<div id='" + element["id"] + "'>Borrar</div>" +
+                                "<div id='settings'>" +
+                                "<input type='button' mod='" + element["id"] + "' value='Modificar'>" + 
+                                "<input  type='button' del='" + element["id"] + "' value='Borrar'>" +
+                                "</div>" +
                             "</td>" +
                         "</tr>"
                     )
