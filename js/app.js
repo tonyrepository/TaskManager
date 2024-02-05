@@ -36,35 +36,37 @@ function refresh(values = "") {
         dataType: "json",
         data: {filter: values, nocache: Math.random()},
         success: function (data) {
-            $("#result").empty()
-            $("#result").append(
-                "<table>" +
-                    "<tr>" +
-                        "<th>" +
-                            "Título" +
-                        "</th>" +
-                        "<th>" +
-                            "Descripción" +
-                        "</th>" +
-                    "</tr>"
-            )
-            data.forEach((element) => {
-                $("#result table").append(
-                    "<tr>" +
-                        "<td>" +
-                            element["Nombre"] +
-                        "</td>" +
-                        "<td>" +
-                            element["Descripcion"] +
-                            "<div id='" + element["id"] + "'>Modificar</div>" + 
-                            "<div id='" + element["id"] + "'>Borrar</div>" +
-                        "</td>" +
-                    "</tr>"
+            if(data.length > 0) {
+                $("#result").empty()
+                $("#result").append(
+                    "<table>" +
+                        "<tr>" +
+                            "<th>" +
+                                "Título" +
+                            "</th>" +
+                            "<th>" +
+                                "Descripción" +
+                            "</th>" +
+                        "</tr>"
                 )
-            })
-            $("#result table").append(
-                "</table>"
-            )
+                data.forEach((element) => {
+                    $("#result table").append(
+                        "<tr>" +
+                            "<td>" +
+                                element["Nombre"] +
+                            "</td>" +
+                            "<td>" +
+                                element["Descripcion"] +
+                                "<div id='" + element["id"] + "'>Modificar</div>" + 
+                                "<div id='" + element["id"] + "'>Borrar</div>" +
+                            "</td>" +
+                        "</tr>"
+                    )
+                })
+                $("#result table").append(
+                    "</table>"
+                )
+            }
         },
         error: () => {
             console.log("error");
