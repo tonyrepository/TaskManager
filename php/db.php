@@ -7,7 +7,7 @@
     
         public function conectar() {
             try {
-                $this ->conn = new PDO("mysql:host=localhost;dbname=task_manager","root","");
+                $this ->conn = new PDO("mysql:host=localhost;dbname=tasks","root","");
             } catch (PDOException $e){
                 echo "Error ".$e->getMessage();
             }
