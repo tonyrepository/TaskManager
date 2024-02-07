@@ -10,6 +10,7 @@
     --secondary-color: #2f2f2f;
     --emphasis: #09F;
     --warn: #F50;
+    scrollbar-width: none;
 }
 
 body {
@@ -21,7 +22,8 @@ strong {
     color: var(--emphasis);
 }
 
-input, textarea {
+input, 
+textarea {
     outline: 0;
     border: 0;
 }
@@ -63,12 +65,14 @@ header input[type="text"] {
     border-radius: .5rem;
     margin: 2.5rem 0;
     width: 700px;
+    height: 600px;
     text-align: center;
     border: 1px solid var(--secondary-color);
 }
 
 #result {
-    overflow: hidden;
+    overflow: auto;
+    scrollbar-width: none;
 }
 
 table {
@@ -99,7 +103,6 @@ table td {
 
 #tarea {
     background: var(--secondary-color);
-    height: 600px;
 }
 
 #tarea * {
@@ -138,7 +141,8 @@ table td {
     animation-duration: 0.5s;
 }
 
-#mod, #del {
+#mod, 
+#del {
     padding: .5rem;
     cursor: pointer;
 }
