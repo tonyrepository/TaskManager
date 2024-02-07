@@ -21,8 +21,7 @@ $(document).ready(
 );
 
 function insert() {
-    console.log("asda")
-    if(/^\s$/.test(taskName)) {
+    if(jQuery.trim($("#taskName").val()).length > 0) {
         $.ajax({
             url: "php/insert.php",
             async: true,
