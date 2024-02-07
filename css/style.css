@@ -74,6 +74,7 @@ header input[type="text"] {
     overflow: auto;
     scrollbar-width: none;
     height: fit-content;
+    max-height: 600px;
 }
 
 table {

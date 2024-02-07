@@ -12,6 +12,7 @@ $(document).ready(
 
         $("body").click((e) => {
             if($(e.target).attr("mod")) {
+                $("html, body").animate({scrollTop: 0}, "slow")
                 modify(e.target)
             } else if($(e.target).attr("del")) {
                 remove(e.target)
