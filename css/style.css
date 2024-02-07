@@ -121,6 +121,12 @@ table td {
     border-bottom: .25rem solid var(--emphasis);
 }
 
+#tarea input[type="button"]:focus {
+    background: #07E;
+    border-bottom: 0px solid;
+    transform: translateY(5px);
+}
+
 #tarea textarea {
     resize: none;
     min-width: calc(100% - 40px);
@@ -153,18 +159,4 @@ table td {
 
 #del {
     background-color: var(--warn);
-}
-
-@keyframes buttonPush {
-    0% {
-    }
-    50% {
-        background: #07E;
-        border-bottom: 0px solid;
-        transform: translateY(5px);
-    }
-    100% {
-        background: var(--emphasis);
-        border-bottom: 5px solid #06D;
-    }
 }
