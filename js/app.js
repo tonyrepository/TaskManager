@@ -22,7 +22,7 @@ $(document).ready(
 
 function insert() {
     console.log("asda")
-    if(taskName != "") {
+    if(/^\s$/.test(taskName)) {
         $.ajax({
             url: "php/insert.php",
             async: true,
