@@ -27,7 +27,11 @@ function insert() {
             async: true,
             dataType: "text",
             data: {nomTask: $("#taskName").val(), descTask: $("#taskDesc").val(), nocache: Math.random()},
-            success: () => {
+            success: (e) => {
+                if (e != "") {
+                    console.warn(e)
+                    window.alert(e)
+                }
                 refresh()
             },
             error: () => {
