@@ -21,6 +21,7 @@ $(document).ready(
 );
 
 function insert() {
+    console.log("asda")
     if(taskName != "") {
         $.ajax({
             url: "php/insert.php",
@@ -45,12 +46,44 @@ function insert() {
 
 function modify(object) {
     $.ajax({
-        url: "php/update.php",
+        url: "php/selectById.php",
         async: true,
-        dataType: "text",
+        dataType: "json",
         data: {id: $(object).attr("mod"), nocache: Math.random()},
-        success: () => {
-            refresh()
+        success: function (data) {
+            $("#taskName").val(data.Nombre)
+            $("#taskDesc").val(data.Descripcion)
+            $("#tarea input[type='button']").remove()
+            $("#tarea").append('<input type="button" id="update" value="Modificar tarea">')
+            $("#update").click(() => {
+                $.ajax({
+                    url: "php/update.php",
+                    async: true,
+                    dataType: "text",
+                    data: {
+                        id: $(object).attr("mod"),
+                        nomTask: $("#taskName").val(), 
+                        descTask: $("#taskDesc").val(), 
+                        nocache: Math.random()
+                    },
+                    success: () => {
+                        refresh()
+
+                        $("#tarea input[type='button']").remove()
+                        $("#tarea").append('<input type="button" id="saveTask" value="Guardar tarea">')
+
+                        $("#taskName").val("")
+                        $("#taskDesc").val("")
+                        
+                        $("#saveTask").click(() => {
+                            insert()
+                        })
+                    },
+                    error: () => {
+                        console.log("error")
+                    }
+                })
+            })
         },
         error: () => {
             console.log("error")
