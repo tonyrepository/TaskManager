@@ -53,8 +53,10 @@ function modify(object) {
         success: function (data) {
             $("#taskName").val(data.Nombre)
             $("#taskDesc").val(data.Descripcion)
+            
             $("#tarea input[type='button']").remove()
             $("#tarea").append('<input type="button" id="update" value="Modificar tarea">')
+            
             $("#update").click(() => {
                 $.ajax({
                     url: "php/update.php",
@@ -74,7 +76,7 @@ function modify(object) {
 
                         $("#taskName").val("")
                         $("#taskDesc").val("")
-                        
+
                         $("#saveTask").click(() => {
                             insert()
                         })
