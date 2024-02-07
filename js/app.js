@@ -27,7 +27,11 @@ function insert() {
             async: true,
             dataType: "text",
             data: {nomTask: $("#taskName").val(), descTask: $("#taskDesc").val(), nocache: Math.random()},
-            success: () => {
+            success: (e) => {
+                if (e != "") {
+                    console.warn(e)
+                    window.alert(e)
+                }
                 refresh()
             },
             error: () => {
@@ -78,7 +82,6 @@ function refresh(values = "") {
         data: {filter: values, nocache: Math.random()},
         success: function (data) {
             $("#result").html("")
-            console.log(data)
             if(data.length > 0) {
                 $("#result").append(
                     "<table>" +
