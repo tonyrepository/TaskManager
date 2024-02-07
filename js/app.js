@@ -44,7 +44,7 @@ function modify(object) {
         url: "php/update.php",
         async: true,
         dataType: "text",
-        data: {id: $(object).attr("del"), nocache: Math.random()},
+        data: {id: $(object).attr("mod"), nocache: Math.random()},
         success: () => {
             refresh()
         },
