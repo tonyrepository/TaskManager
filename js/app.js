@@ -149,7 +149,7 @@ function refresh(values = "") {
                     "</table>"
                 )
             } else {
-                $("#result").append("<strong>no data</strong>")
+                $("#result").append("<strong>No hay tareas</strong>")
             }
         },
         error: () => {
