@@ -78,7 +78,6 @@ function refresh(values = "") {
         data: {filter: values, nocache: Math.random()},
         success: function (data) {
             $("#result").html("")
-            console.log(data)
             if(data.length > 0) {
                 $("#result").append(
                     "<table>" +
