@@ -30,6 +30,7 @@ textarea {
 
 header {
     display: flex;
+    flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
     background: var(--secondary-color);
@@ -40,9 +41,15 @@ header {
     z-index: 9999;
 }
 
+.src {
+    width: fit-content;
+    margin: auto;
+}
+
 header h1,
 i {
     color: var(--emphasis);
+    margin: auto;
 }
 
 header input[type="text"] {
